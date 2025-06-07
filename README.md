@@ -23,7 +23,7 @@
 ![homepage](https://github.com/user-attachments/assets/a08ced64-12c1-4286-8943-80f7a076a745)
 
 ### 🔐 Login Page  
-![Login](https://github.com/user-attachments/assets/d848254a-6c27-414e-bf70-9a2a49038387)![Sign Up](https://github.com/user-attachments/assets/32db9f40-2c85-4b68-ab10-c1993ac9d81e)
+![Login](https://github.com/user-attachments/assets/d848254a-6c27-414e-bf70-9a2a49038387)   ![Sign Up](https://github.com/user-attachments/assets/32db9f40-2c85-4b68-ab10-c1993ac9d81e)
 
 
 ### 📊 Dashboard  
