@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Match Game</title>
+    <link rel="stylesheet" href="matchingcard.css">
+</head>
+<body>
+    <h1>Memory Match Game</h1>
+    <div class="info">
+        <div id="timer">Time: 0s</div>
+        <div id="score">Score: 0</div>
+        <button id="play-btn">Play</button>
+        <button id="restart-btn">Restart Game</button>
+    </div>
+
+    <div id="game-board" class="hidden">
+        <!-- 4x4 Grid of cards with images -->
+        <div class="card" data-name="fevicol"><img src="cat.jpg" alt="Fevicol"></div>
+        <div class="card" data-name="fevicol"><img src="cat.jpg" alt="Fevicol"></div>
+        <div class="card" data-name="fountain-pen"><img src="lion.jpg" alt="Fountain Pen"></div>
+        <div class="card" data-name="fountain-pen"><img src="lion.jpg" alt="Fountain Pen"></div>
+        <div class="card" data-name="highlighter"><img src="tiger.jpg" alt="Highlighter"></div>
+        <div class="card" data-name="highlighter"><img src="tiger.jpg" alt="Highlighter"></div>
+        <div class="card" data-name="marker"><img src="dog.jpg" alt="Marker"></div>
+        <div class="card" data-name="marker"><img src="dog.jpg" alt="Marker"></div>
+        <div class="card" data-name="notes"><img src="panda.jpg" alt="Notes"></div>
+        <div class="card" data-name="notes"><img src="panda.jpg" alt="Notes"></div>
+        <div class="card" data-name="oil-pastel"><img src="fox.jpg" alt="Oil Pastel"></div>
+        <div class="card" data-name="oil-pastel"><img src="fox.jpg" alt="Oil Pastel"></div>
+        <div class="card" data-name="organizer"><img src="elephant.jpg" alt="Organizer"></div>
+        <div class="card" data-name="organizer"><img src="elephant.jpg" alt="Organizer"></div>
+        <div class="card" data-name="pouch"><img src="rat.jpg" alt="Pouch"></div>
+        <div class="card" data-name="pouch"><img src="rat.jpg" alt="Pouch"></div>
+    </div>
+
+    <script src="matchingcard.js"></script>
+</body>
+</html>

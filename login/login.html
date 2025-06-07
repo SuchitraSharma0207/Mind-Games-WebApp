@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Navbar</title>
+  <link rel="stylesheet" type="text/css" href="loginpage.css">
+  <link href="https://fonts.googleapis.com/css2?family" rel="stylesheet">
+
+  <style>
+    /* Styles for Modal */
+    #imageUploadModal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      overflow: auto;
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 600px;
+      box-sizing: border-box;
+      border-radius: 8px;
+    }
+
+    .close-btn {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close-btn:hover,
+    .close-btn:focus {
+      color: black;
+      text-decoration: none;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    input[type="file"] {
+      width: 100%;
+      padding: 12px 20px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      /* Adjust font size */
+      white-space: nowrap;
+      /* Prevent text overflow */
+      overflow: hidden;
+      text-overflow: ellipsis;
+      /* Adds ellipsis (...) when content overflows */
+    }
+
+    /* File input text overflow handling */
+    input[type="file"]:focus {
+      outline: none;
+      border-color: #4CAF50;
+    }
+
+    input[type="submit"] {
+      padding: 12px 25px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    /* For smaller devices */
+    @media (max-width: 600px) {
+      .modal-content {
+        width: 90%;
+        margin-top: 20%;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      input[type="submit"] {
+        font-size: 14px;
+      }
+    }
+  </style>
+
+
+
+
+</head>
+
+
+<body>
+  <div class="main">
+    <input type="checkbox" id="chk" aria-hidden="true">
+
+    <!-- Sign up form -->
+    <div class="signup">
+      <form action="login.php" method="POST">
+        <label for="chk" aria-hidden="true">Login</label>
+        <input type="text" name="txt" placeholder="Email" required="">
+        <input type="password" name="pswd" placeholder="Password" required="">
+        <button type="submit">Login</button>
+      </form>
+    </div>
+    <div class="login">
+      <form id="signupForm">
+        <label for="chk" aria-hidden="true">Sign up</label>
+        <input type="text" name="txt" placeholder="User name" required="">
+        <input type="email" name="email" placeholder="Email" required="">
+        <input type="password" name="pswd" placeholder="Password" required="">
+        <button type="submit">Sign up</button>
+      </form>
+
+      <!-- Modal for Image Upload -->
+      <div id="imageUploadModal" class="modal" style="display:none;">
+        <div class="modal-content">
+          <span class="close-btn" onclick="closeModal()">&times;</span>
+          <h2>Upload Your Profile Picture</h2>
+          <form id="uploadForm" method="POST" enctype="multipart/form-data">
+            <input type="file" name="profile_picture" id="profile_picture" required><br><br>
+            <input type="hidden" name="user_id" id="user_id" value="">
+            <input type="submit" value="Upload">
+          </form>
+        </div>
+      </div>
+
+      <div id="message"></div>
+    </div>
+
+    <script>
+      // Function to show the modal with the user ID after successful signup
+      function showModal(userId) {
+        console.log('User ID received:', userId); // Debugging log
+        document.getElementById('user_id').value = userId;
+        document.getElementById('imageUploadModal').style.display = 'block';
+      }
+
+      // Function to close the modal
+      function closeModal() {
+        document.getElementById('imageUploadModal').style.display = 'none';
+      }
+
+      // Handle the image upload via AJAX (without reloading the page)
+      document.getElementById('uploadForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent form from submitting normally
+
+        let formData = new FormData(this);
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', 'upload_picture.php', true);
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+            // On success, show message and close modal
+            document.getElementById('message').innerHTML = 'Profile picture uploaded successfully!';
+            closeModal();
+            window.location.href = 'http://localhost/Mind%20Games%20-1/dashboard.php'; // Redirect to dashboard
+          } else {
+            document.getElementById('message').innerHTML = 'Error uploading picture!';
+          }
+        };
+        xhr.onerror = function () {
+          document.getElementById('message').innerHTML = 'Request failed!';
+        };
+        xhr.send(formData);
+      });
+
+      // Listen for successful form submission to show the modal after signup
+      document.getElementById('signupForm').addEventListener('submit', function (event) {
+        event.preventDefault();  // Prevent the default form submission
+        console.log("Form submission triggered");
+
+
+        let formData = new FormData(this);
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', 'signup.php', true); // Send data to signup.php
+
+
+        xhr.onload = function () {
+          console.log("Response:", xhr.responseText); // Debugging log
+          if (xhr.status === 200) {
+            let userId = xhr.responseText;  // The response from signup.php will be the user_id
+            if (userId) {
+              showModal(userId);  // Show the modal and pass user_id to it
+            } else {
+              alert('Error: User ID not received.');
+            }
+          } else {
+            alert('Error during signup');
+          }
+        };
+
+
+        xhr.onerror = function () {
+          alert('Request failed!');
+        };
+        xhr.send(formData);  // Send the form data via AJAX
+      });
+    </script>
+
+
+
+
+</body>
+
+</html>

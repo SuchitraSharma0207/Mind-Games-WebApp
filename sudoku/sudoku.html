@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Game</title>
+    <link rel="stylesheet" href="sudoku.css">
+</head>
+<body>
+    
+    <div class="container">
+        <img src="sukodu1.jpg" alt="">
+        <h1>ՏᑌᗪOKᑌ</h1>
+        <div id="sudoku-board"></div>
+        <div class="number-buttons">
+            <button class="number-btn">1</button>
+            <button class="number-btn">2</button>
+            <button class="number-btn">3</button>
+            <button class="number-btn">4</button>
+            <button class="number-btn">5</button>
+            <button class="number-btn">6</button>
+            <button class="number-btn">7</button>
+            <button class="number-btn">8</button>
+            <button class="number-btn">9</button>
+        </div>
+        
+        <div id="timer">Time: 00:00</div>
+        <div class="controls">
+            <button id="new-game">New Game</button>
+            <button id="validate">Validate</button>
+            <button id="reset">Reset</button>
+        </div>
+        <div id="validationModal" class="modal">
+            <div class="modal-content">
+                <p id="validationMessage"></p>
+                <button id="close-validation-modal">Close</button>
+            </div>
+        </div>
+        <div id="newGameModal" class="modal">
+            <div class="modal-content">
+                <p>Are you sure you want to start a new game?</p>
+                <button id="yes-new-game">Yes</button>
+                <button id="no-new-game">No</button>
+            </div>
+        </div>
+    </div>
+    <script src="sudoku.js"></script>
+</body>
+</html>

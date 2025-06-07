@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Math Shop Game</title>
+    <link rel="stylesheet" href="mathpuzzle.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Math Shop Game</h1>
+        <div class="shop">
+            <div class="item" data-item="pencil"> 
+                <img src="pencil.jpg" alt="Pencil">
+                <p>Pencil</p>
+                <span class="price" id="price-pencil">0</span>
+            </div>
+            <div class="item" data-item="eraser">
+                <img src="rubber.jpg" alt="Eraser">
+                <p>Eraser</p>
+                <span class="price" id="price-eraser">0</span>
+            </div>
+            <div class="item" data-item="sharpener">
+                <img src="sharpner.jpg" alt="Sharpener">
+                <p>Sharpener</p>
+                <span class="price" id="price-sharpener">0</span>
+            </div>
+            <div class="item" data-item="rounder">
+                <img src="rounder.jpg" alt="Rounder">
+                <p>Rounder</p>
+                <span class="price" id="price-rounder">0</span>
+            </div>
+            <div class="item" data-item="scale">
+                <img src="scale.jpg" alt="Scale">
+                <p>Scale</p>
+                <span class="price" id="price-scale">0</span>
+            </div>
+            <div class="item" data-item="colourplat">
+                <img src="colorplate.jpg" alt="Colour Plat">
+                <p>Colour Plate</p>
+                <span class="price" id="price-colourplat">0</span>
+            </div>
+        </div>
+
+        <div class="game-info">
+            <p>Score: <span id="score">0</span></p>
+            <p id="question">Loading question...</p>
+            <input type="number" id="answer" placeholder="Enter your answer">
+            <button id="submit">Submit</button>
+            <p id="feedback"></p>
+            <button id="next">Next Question</button>
+        </div>
+    </div>
+
+    <script src="mathpuzzle.js"></script>
+</body>
+</html>
